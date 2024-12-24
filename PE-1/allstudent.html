@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Students</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ccc;
+        }
+        th {
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>All Student Data</h1>
+    <script>
+        fetch("http://localhost:3000")
+            .then(response => response.json())
+            .then(data => {
+                const table = document.createElement('table');
+                const tableHead = document.createElement('thead');
+                const tableBody = document.createElement('tbody');
+
+                // Create table headers
+                const headers = ['Roll No', 'Name', 'Email', 'Course Name', 'Batch', 'Group No'];
+                const headerRow = document.createElement('tr');
+
+                headers.forEach(header => {
+                    const th = document.createElement('th');
+                    th.textContent = header;
+                    headerRow.appendChild(th);
+                });
+
+                tableHead.appendChild(headerRow);
+                table.appendChild(tableHead);
+
+                // Create table rows for student data
+                data.forEach(person => {
+                    const row = document.createElement('tr');
+
+                    const rollNoCell = document.createElement('td');
+                    rollNoCell.textContent = person.rollno;
+
+                    const nameCell = document.createElement('td');
+                    nameCell.textContent = person.name;
+
+                    const emailCell = document.createElement('td');
+                    emailCell.textContent = person.email;
+
+                    const courseCell = document.createElement('td');
+                    courseCell.textContent = person.course;
+
+                    const batchCell = document.createElement('td');
+                    batchCell.textContent = person.batch;
+
+                    const groupCell = document.createElement('td');
+                    groupCell.textContent = person.group;
+
+                    row.appendChild(rollNoCell);
+                    row.appendChild(nameCell);
+                    row.appendChild(emailCell);
+                    row.appendChild(courseCell);
+                    row.appendChild(batchCell);
+                    row.appendChild(groupCell);
+
+                    tableBody.appendChild(row);
+                });
+
+                table.appendChild(tableBody);
+                document.body.appendChild(table);
+            })
+            .catch(err => {
+                console.error('Error fetching student data:', err);
+            });
+    </script>
+</body>
+
+</html>
