@@ -4,3 +4,4 @@ Team Details:
 Ramanjot Kaur(2310992189)
 Sahira(2310992199)
 Shiwangi(2310992210)
+Ishita(2310990777)
