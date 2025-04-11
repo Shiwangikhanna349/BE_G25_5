@@ -1,0 +1,22 @@
+{
+  "name": "blog-management-system",
+  "version": "1.0.0",
+  "description": "A simple blog management system built with Node.js and EJS.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "author": "Ashish",
+  "license": "ISC",
+  "dependencies": {
+
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-session": "^1.18.1",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
