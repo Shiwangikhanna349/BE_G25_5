@@ -38,7 +38,6 @@ mongoose.connection.on("error", (err) => {
 
 app.get("/", async (req, res, next) => {
   try {
-    const user = null;
     const searchQuery = req.query.search;
     let filter = {};
     if (searchQuery) {
@@ -47,7 +46,6 @@ app.get("/", async (req, res, next) => {
     const posts = await Post.find(filter).sort({ date: -1 });
     res.render("home", {
       posts,
-      user,
       searchQuery: searchQuery || "",
     });
   } catch (error) {
@@ -71,8 +69,7 @@ app.get("/post/:id", async (req, res, next) => {
 });
 
 app.get("/addPost", (req, res) => {
-  const user = null;
-  res.render("addPost", { user });
+  res.render("addPost");
 });
 
 app.post("/addPost", async (req, res, next) => {
